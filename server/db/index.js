@@ -6,18 +6,21 @@ const Category = require("./models/Category");
 const Item = require("./models/Item");
 const Wishlist = require("./models/Wishlist");
 
-//associations
-//wishlist and user
+//ASSOCIATIONS
+//user has many wishlists
 Wishlist.belongsTo(User);
-User.hasOne(Wishlist);
+User.hasMany(Wishlist);
 
-//wishlist and item
-Wishlist.hasMany(Item);
+//wishlist has many items
 Item.belongsTo(Wishlist);
+Wishlist.hasMany(Item);
 
-//item and category
-Category.hasMany(Item);
+//item belongs to one category
 Item.belongsTo(Category);
+Category.hasMany(Item);
+
+//friends
+User.belongsToMany(User, { as: "friends", through: "friendship" });
 
 module.exports = {
   db,
