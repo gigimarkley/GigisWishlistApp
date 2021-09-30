@@ -5,8 +5,9 @@ import { logout } from "../store";
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
-    <h1>Gigi's Wishlist</h1>
     <nav>
+      <img id="wishlistLogo" src="./favicon.ico"></img>
+      <h1>Gigi's Wishlist</h1>
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}

@@ -18,7 +18,7 @@ router.get("/:itemId", requireToken, isUser, async (req, res, next) => {
 
 //api/item/:itemId
 //DELETE single item
-router.delete("/:itemId", requireToken, isAdmin, async (req, res, next) => {
+router.delete("/:itemId", requireToken, async (req, res, next) => {
   try {
     const item = await Item.findByPk(req.params.itemId);
     await item.destroy();
