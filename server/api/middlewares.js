@@ -11,9 +11,10 @@ const requireToken = async (req, res, next) => {
   }
 };
 
+//I will need to reconsider this one because I don't always pass into req params
 const isUser = (req, res, next) => {
   try {
-    if (req.user.dataValues.id !== parseInt(req.params.id)) {
+    if (req.user.dataValues.id !== parseInt(req.params.userId)) {
       throw new Error("Unauthorized!");
     }
     next();
@@ -21,5 +22,7 @@ const isUser = (req, res, next) => {
     next(error);
   }
 };
+
+//need to add middleware that checks if user is a friend or not
 
 module.exports = { requireToken, isUser };
