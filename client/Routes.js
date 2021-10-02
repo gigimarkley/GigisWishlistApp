@@ -7,6 +7,7 @@ import UpdateAccount from "./components/UpdateAccount";
 import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
 import AllWishlists from "./components/AllWishlists";
+import SingleWishlist from "./components/SingleWishlist";
 
 /**
  * COMPONENT
@@ -25,6 +26,11 @@ class Routes extends Component {
           <Switch>
             <Route exact path="/home" component={Home} />
             <Route exact path="/wishlist" component={AllWishlists} />
+            <Route
+              exact
+              path="/wishlist/:wishlistId"
+              component={SingleWishlist}
+            />
             <Route exact path="/account" component={AccountInfo} />
             <Route exact path="/account/update" component={UpdateAccount} />
             <Redirect to="/home" />

@@ -10,8 +10,10 @@ body {
 }
 
 #siteName{
+  align-items: center;
+  display: flex;
   font-size: 70px;
-  width: 35%;
+  width: 100%;
   padding: 20px;
   margin-top: -70px;
   position: fixed;
@@ -51,6 +53,8 @@ nav {
   margin-bottom: .5em;
   background-color: lightskyblue;
   color:white;
+  width: 100%;
+  
  
 }
 

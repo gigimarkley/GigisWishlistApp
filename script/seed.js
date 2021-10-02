@@ -30,6 +30,22 @@ const seed = async () => {
       public: true,
       name: "wishlist1",
     });
+    const wishlist3 = await Wishlist.create({
+      userId: gigi.id,
+      public: true,
+      name: "wishlist3",
+    });
+    const wishlist4 = await Wishlist.create({
+      userId: gigi.id,
+      public: true,
+      name: "wishlist4",
+    });
+    const wishlist5 = await Wishlist.create({
+      userId: gigi.id,
+      public: true,
+      name: "wishlist5",
+    });
+
     const wishlist2 = await Wishlist.create({
       userId: person2.id,
       public: true,

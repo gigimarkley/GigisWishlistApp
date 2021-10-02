@@ -19,11 +19,9 @@ class AllWishlists extends React.Component {
         {wislists.map((wishlist) => {
           return (
             <div key={wishlist.id}>
-              <div>
-                <h4>
-                  <Link>{wishlist.name}</Link>
-                </h4>
-              </div>
+              <Link to={`/wishlist/${wishlist.id}`}>
+                <button>{wishlist.name}</button>
+              </Link>
             </div>
           );
         })}
