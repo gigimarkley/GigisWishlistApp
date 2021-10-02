@@ -1,9 +1,31 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   color: black;
-  background-color: lightblue;
-}
+  background-color: #175274;
+  font-family: Gill Sans, sans-serif;
+  font-size: larger;
+  text-align: center;
+  font-weight: bold;
   
+}
+
+#siteName{
+  font-size: 70px;
+  width: 35%;
+  padding: 20px;
+  margin-top: -70px;
+  position: fixed;
+  height: 50px;
+  text-shadow: 0 0 4px white,
+              0 0 6px black;
+}
+#navBarLink:hover{
+  color: blue;
+}
+#navBarLink{
+  color: #1f88c5;
+}
+ 
 #wishlistLogo {
   height: 200px;
   width: 200px;
@@ -14,20 +36,11 @@ body {
 
 a {
   text-decoration: none;
+  color: #1f88c5;
 }
 
 label {
   display: block;
-}
-
-form div {
-  margin: 1em;
-  display: inline-block;
-}
-
-button {
-  background-color:black;
-  color: white
 }
 
 nav {
@@ -37,12 +50,46 @@ nav {
   height: 200px;
   margin-bottom: .5em;
   background-color: lightskyblue;
-  color:white
+  color:white;
+ 
 }
 
 nav a {
   display: inline-block;
-  margin: 0.5em;
+  margin:20px;
+  margin-top:150px;
 }
 
+button {
+  font-size: medium;
+  font-weight: bold;
+  background-color: lightblue;
+  height: 55px;
+  width: 230px;
+  margin: 10px;
+  outline: none;
+  border: 5px solid white;
+  border-radius: 10px 300px;;
+  box-shadow: 0 0 4px white,
+              0 0 6px black;
+  font-family: Gill Sans, sans-serif;
+  color: #1f88c5
+}
+
+button:active {
+  position: relative;
+  top: 3px;
+}
+
+button:hover {
+  background-color: #175274;
+}
+
+#pageTitles {
+  color: #499fd1;
+}
+
+form div {
+  margin: 10px;
+}
 

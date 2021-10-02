@@ -12,22 +12,33 @@ const seed = async () => {
     //USERS
     const gigi = await User.create({
       username: "gigi",
+      name: "gigi",
       password: "123",
       email: "gigi@email.com",
     });
 
     const person2 = await User.create({
       username: "person2",
+      name: "person2",
       password: "123",
       email: "person2@email.com",
     });
 
     //WISHLISTS
-    const wishlist1 = await Wishlist.create({ userId: gigi.id });
-    const wishlist2 = await Wishlist.create({ userId: person2.id });
+    const wishlist1 = await Wishlist.create({
+      userId: gigi.id,
+      public: true,
+      name: "wishlist1",
+    });
+    const wishlist2 = await Wishlist.create({
+      userId: person2.id,
+      public: true,
+      name: "wishlist1",
+    });
 
     //CATEGORIES
-    const jewelry = await Category.create({ name: "jewelry" });
+    const jewelry = await Category.create({ name: "jewelry", userId: gigi.id });
+    const stuff = await Category.create({ name: "stuff", userId: person2.id });
 
     //ITEMS
     await Item.create({
@@ -36,6 +47,7 @@ const seed = async () => {
       notes: "Some notes here",
       wishlistId: wishlist1.id,
       categoryId: jewelry.id,
+      status: "AVAILABLE",
     });
     await Item.create({
       name: "thing2",
@@ -43,13 +55,15 @@ const seed = async () => {
       notes: "Some notes here",
       wishlistId: wishlist1.id,
       categoryId: jewelry.id,
+      status: "AVAILABLE",
     });
     await Item.create({
       name: "thing3",
       link: "https://gorjana.com/",
       notes: "Some notes here",
       wishlistId: wishlist2.id,
-      categoryId: jewelry.id,
+      categoryId: stuff.id,
+      status: "AVAILABLE",
     });
   } catch (err) {
     console.log(err);
