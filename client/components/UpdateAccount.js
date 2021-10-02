@@ -39,20 +39,31 @@ class UpdateAccount extends React.Component {
     const { name, username, email } = this.state;
     const { handleSubmit, handleChange } = this;
     return (
-      <form onSubmit={handleSubmit}>
-        <h1 id="headers">Update Account Info</h1>
-        <label>Name:</label>
-        <input onChange={handleChange} name="name" value={name} />
+      <form id="userUpdate" onSubmit={handleSubmit}>
+        <h1 id="pageTitles">Update Account Info</h1>
+        <div id="row1">
+          <div>
+            <label>Name:</label>
+            <input onChange={handleChange} name="name" value={name} />
+          </div>
 
-        <label>Username:</label>
-        <input onChange={handleChange} name="username" value={username} />
+          <div>
+            <label>Username:</label>
+            <input onChange={handleChange} name="username" value={username} />
+          </div>
 
-        <label>Email:</label>
-        <input onChange={handleChange} name="email" value={email} />
+          <div>
+            <label>Email:</label>
+            <input onChange={handleChange} name="email" value={email} />
+          </div>
+        </div>
 
-        <button type="submit">Submit</button>
-
-        <Link to="/account">Cancel</Link>
+        <button id="pageLinks" type="submit">
+          Submit
+        </button>
+        <button>
+          <Link to="/account">Cancel</Link>
+        </button>
       </form>
     );
   }

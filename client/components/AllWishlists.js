@@ -9,7 +9,9 @@ class AllWishlists extends React.Component {
   render() {
     return (
       <div>
-        <h3>Here are all your wishlists, {this.props.user.name}</h3>
+        <h1 id="pageTitles">
+          Here are all your wishlists, {this.props.user.name}
+        </h1>
       </div>
     );
   }

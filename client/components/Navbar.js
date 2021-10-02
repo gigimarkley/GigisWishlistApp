@@ -7,14 +7,23 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
     <nav>
       <img id="wishlistLogo" src="./favicon.ico"></img>
-      <h1>Gigi's Wishlist</h1>
+      <div>
+        <h1 id="siteName">Gigi's Wishlist</h1>
+      </div>
+
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <Link to="/wishlist">Wishlists </Link>
-          <Link to="/account">Account Info</Link>
-          <a href="#" onClick={handleClick}>
+          <Link id="navBarLink" to="/home">
+            Home
+          </Link>
+          <Link id="navBarLink" to="/wishlist">
+            Wishlists{" "}
+          </Link>
+          <Link id="navBarLink" to="/account">
+            Account Info
+          </Link>
+          <a id="navBarLink" href="#" onClick={handleClick}>
             Logout
           </a>
           {/* <Link>Your Friends </Link> */}
@@ -22,8 +31,12 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+          <Link id="navBarLink" to="/login">
+            Login
+          </Link>
+          <Link id="navBarLink" to="/signup">
+            Sign Up
+          </Link>
         </div>
       )}
     </nav>

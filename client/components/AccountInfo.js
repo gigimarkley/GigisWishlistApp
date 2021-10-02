@@ -14,10 +14,12 @@ class AccountInfo extends React.Component {
     const email = this.props.user.email || "";
     return (
       <div id="single-user">
-        <h1>Here is your account info, {name}</h1>
+        <h1 id="pageTitles">Here is your account info, {name}</h1>
         <div> Username: {username} </div>
         <div> Email: {email}</div>
-        <Link to={`/account/update`}>Update Account Info</Link>
+        <Link id="pageLinks" to={`/account/update`}>
+          <button>Update Account Info</button>
+        </Link>
       </div>
     );
   }

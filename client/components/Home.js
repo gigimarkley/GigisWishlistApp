@@ -18,7 +18,9 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h3>Welcome to your wishlist app, {this.props.user.name}</h3>
+        <h1 id="pageTitles">
+          Welcome to your wishlist app, {this.props.user.name}
+        </h1>
       </div>
     );
   }
