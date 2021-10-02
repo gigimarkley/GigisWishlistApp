@@ -4,8 +4,9 @@ import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import auth from "./auth";
 import singleUser from "./singleUser";
+import allWishlists from "./allwishlists";
 
-const reducer = combineReducers({ auth, user: singleUser });
+const reducer = combineReducers({ auth, user: singleUser, allWishlists });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
 );
