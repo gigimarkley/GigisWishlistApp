@@ -37,8 +37,8 @@ const seed = async () => {
     });
 
     //CATEGORIES
-    const jewelry = await Category.create({ name: "jewelry" });
-    const stuff = await Category.create({ name: "stuff" });
+    const jewelry = await Category.create({ name: "jewelry", userId: gigi.id });
+    const stuff = await Category.create({ name: "stuff", userId: person2.id });
 
     //ITEMS
     await Item.create({

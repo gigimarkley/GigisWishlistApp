@@ -5,8 +5,8 @@ const {
 const { requireToken, isUser } = require("./middlewares");
 
 //GET all the user's wishlists
-// /api/wishlist/:userId
-router.get("/:userId", async (req, res, next) => {
+// /api/wishlist/allWishlists/:userId
+router.get("/allWishlists/:userId", async (req, res, next) => {
   try {
     const allUsersWishlists = await Wishlist.findAll({
       where: {

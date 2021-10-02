@@ -1,17 +1,23 @@
 const router = require("express").Router();
 const {
-  models: { Category },
+  models: { Category, Item },
 } = require("../db");
 const { requireToken, isUser } = require("./middlewares");
 
 //GET all the user's categories
-// /api/category/:userIo
-router.get("/:userId", async (req, res, next) => {
+//this doesnt work because user and categories aren't directly associated
+// /api/category/allCategories/:userId
+router.get("/allCategories/:userId", async (req, res, next) => {
   try {
     const allUsersCategories = await Category.findAll({
-      where: {
-        userId: req.params.userId,
-      },
+      //   where: {
+      //     userId: req.params.userId,
+      //   },
+      include: [
+        {
+          model: Item,
+        },
+      ],
     });
     res.send(allUsersCategories);
   } catch (err) {
