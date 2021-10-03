@@ -10,7 +10,7 @@ router.get("/allWishlists/:userId", async (req, res, next) => {
   try {
     const allUsersWishlists = await Wishlist.findAll({
       where: {
-        userId: req.params.userId,
+        userId: parseInt(req.params.userId),
       },
     });
     res.send(allUsersWishlists);

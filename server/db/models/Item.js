@@ -19,6 +19,7 @@ const Item = db.define("item", {
   },
   quantity: {
     type: Sequelize.INTEGER,
+    defaultValue: 1,
   },
   link: {
     type: Sequelize.TEXT,
@@ -33,7 +34,6 @@ const Item = db.define("item", {
   status: {
     type: Sequelize.ENUM("AVAILABLE", "PURCHASED"),
     defaultValue: "AVAILABLE",
-    allowNull: false,
   },
 });
 

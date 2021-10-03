@@ -1,0 +1,28 @@
+{
+    "name": "Gigi's Wishlist",
+    "description": "Gigi's Wishlist Extension!",
+    "version": "1.0",
+    "manifest_version": 3,
+    
+    "background": {
+        "service_worker": "background.js"
+      },
+      "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+          "16": "/images/wishlist_logo-2.png",
+        "32": "/images/wishlist_logo-3.png",
+        "48": "/images/wishlist_logo-4.png",
+        "128": "/images/wishlist_logo-5.png"
+          }
+      },
+      "icons": {
+        "16": "/images/wishlist_logo.ico",
+        "32": "/images/wishlist_logo.ico",
+        "48": "/images/wishlist_logo.ico",
+        "128": "/images/wishlist_logo.ico"
+      },
+     
+      "permissions": ["storage", "activeTab", "scripting","tabs","unlimitedStorage","http://localhost:8080/*"
+
+    ] }
