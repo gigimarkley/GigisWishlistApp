@@ -5,8 +5,7 @@ body {
   font-family: Gill Sans, sans-serif;
   font-size: larger;
   text-align: center;
-  font-weight: bold;
-  
+  font-weight: bold; 
 }
 
 #navBarLink:hover{
@@ -88,5 +87,20 @@ button:hover {
 
 form div {
   margin: 10px;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+}
+
+.items-wishlist {
+  display: inline-table;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: space-between;
+  width: 18rem;
+  margin: 0.5rem;
+  padding: 1.2rem;
 }
 

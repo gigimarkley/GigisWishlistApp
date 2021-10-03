@@ -4,6 +4,12 @@ const {
 } = require("../db");
 const { requireToken, isUser } = require("./middlewares");
 
+const { parser } = require("html-metadata-parser");
+async function urlParser(url) {
+  var result = await parser(url, { mode: "cors" });
+  return result;
+}
+
 //GET single item
 // /api/item/itemId
 router.get("/:itemId", async (req, res, next) => {
@@ -20,17 +26,14 @@ router.get("/:itemId", async (req, res, next) => {
 router.put("/:itemId", async (req, res, next) => {
   try {
     const item = await Item.findByPk(req.params.itemId);
+    //update image when changes are made
+    const urlData = await urlParser(req.body.link);
+    req.body.imageUrl = urlData.og.image;
     res.json(await item.update(req.body));
   } catch (error) {
     next(error);
   }
 });
-
-const { parser } = require("html-metadata-parser");
-async function urlParser(url) {
-  var result = await parser(url, { mode: "cors" });
-  return result;
-}
 
 //ADD an item
 // /api/item
