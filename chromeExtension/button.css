@@ -1,0 +1,63 @@
+body {
+  background-color: lightskyblue;
+  font-family: Gill Sans, sans-serif;
+  font-size: larger;
+  text-align: center;
+  font-weight: bold;
+}
+
+#LogoInPopUp {
+  height: 200px;
+  width: 200px;
+  outline: none;
+  margin: 10px;
+  border: 10px;
+}
+
+.popUpButtons {
+  background-color: lightblue;
+  height: 55px;
+  width: 230px;
+  margin: 10px;
+  outline: none;
+  border: 5px solid white;
+  border-radius: 10px 300px;;
+  box-shadow: 0 0 4px white,
+              0 0 6px black;
+  font-family: Gill Sans, sans-serif;
+}
+
+button {
+  font-size: medium;
+  font-weight: bold;
+}
+
+button:active {
+  position: relative;
+  top: 3px;
+}
+
+button:hover {
+  background-color: #175274;
+  color: white;
+}
+
+select {
+  background-color: lightblue;
+  height: 55px;
+  width: 230px;
+  margin: 10px;
+  outline: none;
+  border: 5px solid white;
+  border-radius: 10px 300px;;
+  box-shadow: 0 0 4px white,
+              0 0 6px black;
+  text-align: center;
+  font-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #000;
+}
+
+

@@ -9,25 +9,37 @@ body {
   
 }
 
-#siteName{
-  align-items: center;
-  display: flex;
-  font-size: 70px;
-  width: 100%;
-  padding: 20px;
-  margin-top: -70px;
-  position: fixed;
-  height: 50px;
-  text-shadow: 0 0 4px white,
-              0 0 6px black;
-}
 #navBarLink:hover{
   color: blue;
 }
+
 #navBarLink{
   color: #1f88c5;
 }
- 
+nav {
+  align-items: center;
+  display: flex;
+  z-index: 1;
+  height: 200px;
+  margin-bottom: .5em;
+  background-color: lightskyblue;
+  color:white;
+  width: 100%;
+}
+
+nav a {
+  display: inline-block;
+  margin:20px;
+  margin-top:150px;
+}
+
+#siteName{
+  margin-top: -70px;
+  height: 50px;
+  font-size: 70px;
+  text-shadow: 0 0 4px white,
+              0 0 6px black;
+}
 #wishlistLogo {
   height: 200px;
   width: 200px;
@@ -43,25 +55,6 @@ a {
 
 label {
   display: block;
-}
-
-nav {
-  align-items: center;
-  display: flex;
-  z-index: 1;
-  height: 200px;
-  margin-bottom: .5em;
-  background-color: lightskyblue;
-  color:white;
-  width: 100%;
-  
- 
-}
-
-nav a {
-  display: inline-block;
-  margin:20px;
-  margin-top:150px;
 }
 
 button {

@@ -33,7 +33,6 @@ const Item = db.define("item", {
   status: {
     type: Sequelize.ENUM("AVAILABLE", "PURCHASED"),
     defaultValue: "AVAILABLE",
-    allowNull: false,
   },
 });
 

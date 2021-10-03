@@ -21,11 +21,19 @@ class SingleWishlist extends React.Component {
           return (
             <div key={item.id}>
               <Link to={`/item/${item.id}`}>
+                <img src={item.imageUrl}></img>
                 <button>{item.name}</button>
               </Link>
             </div>
           );
         })}
+        <Link id="pageLinks" to={`/item/add`}>
+          <button>Add Item</button>
+        </Link>
+        <button>Edit Wishlist</button>
+        <Link id="pageLinks" to={`/wishlist`}>
+          <button>Go Back To All Wishlists</button>
+        </Link>
       </div>
     );
   }

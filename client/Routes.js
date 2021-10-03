@@ -8,6 +8,9 @@ import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
 import AllWishlists from "./components/AllWishlists";
 import SingleWishlist from "./components/SingleWishlist";
+import SingleItem from "./components/SingleItem";
+import UpdateItem from "./components/UpdateItem";
+import AddItem from "./components/AddItem";
 
 /**
  * COMPONENT
@@ -31,6 +34,10 @@ class Routes extends Component {
               path="/wishlist/:wishlistId"
               component={SingleWishlist}
             />
+            <Route exact path="/item/add" component={AddItem} />
+            <Route exact path="/item/:itemId" component={SingleItem} />
+            <Route exact path="/item/:itemId/update" component={UpdateItem} />
+
             <Route exact path="/account" component={AccountInfo} />
             <Route exact path="/account/update" component={UpdateAccount} />
             <Redirect to="/home" />

@@ -6,12 +6,16 @@ import auth from "./auth";
 import singleUser from "./singleUser";
 import allWishlists from "./allwishlists";
 import selectedWishlist from "./singlewishlist";
+import singleItem from "./singleItem";
+import category from "./category";
 
 const reducer = combineReducers({
   auth,
   user: singleUser,
   allWishlists,
   selectedWishlist: selectedWishlist,
+  selectedItem: singleItem,
+  selectedCateory: category,
 });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
