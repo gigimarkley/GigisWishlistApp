@@ -19,6 +19,7 @@ const Item = db.define("item", {
   },
   quantity: {
     type: Sequelize.INTEGER,
+    defaultValue: 1,
   },
   link: {
     type: Sequelize.TEXT,

@@ -25,7 +25,9 @@ class AllWishlists extends React.Component {
             </div>
           );
         })}
-        <button>Add A Wishlist</button>
+        <Link id="pageLinks" to={`/wishlist/add`}>
+          <button>Add A Wishlist</button>
+        </Link>
       </div>
     );
   }
@@ -38,6 +40,7 @@ const mapState = (state) => {
     allWishlists: state.allWishlists,
   };
 };
+
 const mapDispatch = (dispatch) => {
   return {
     getAccount: (userId) => {

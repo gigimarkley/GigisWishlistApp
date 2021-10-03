@@ -4,8 +4,8 @@ const TOKEN = "token";
 
 //ACTION TYPES
 const SET_WISHLIST = "SET_WISHLIST";
-const ADD_ITEM = "ADD_ITEM";
-const DELETE_ITEM = "DELETE_ITEM";
+const UPDATE_WISHLIST = "UPDATE_WISHLIST ";
+const ADD_WISHLIST = "ADD_WISHLIST";
 
 //ACTION CREATORS
 export const setWishlist = (wishlist) => {
@@ -14,17 +14,18 @@ export const setWishlist = (wishlist) => {
     wishlist,
   };
 };
-export const _addItem = (item) => {
+
+export const updateWishlist = (wishlist) => {
   return {
-    type: ADD_ITEM,
-    item,
+    type: UPDATE_WISHLIST,
+    wishlist,
   };
 };
 
-export const _deleteItem = (item) => {
+export const _addWishlist = (wishlist) => {
   return {
-    type: DELETE_ITEM,
-    item,
+    type: ADD_WISHLIST,
+    wishlist,
   };
 };
 
@@ -47,25 +48,36 @@ export const fetchSingleWishlist = (wishlistId) => {
   };
 };
 
-export const addItem = (item, history) => {
+export const updateSingleWishlist = (wishlist) => {
   return async (dispatch) => {
     try {
       const token = window.localStorage.getItem(TOKEN);
       if (token) {
-        const { data: created } = await axios.post("/api/item", item);
+        const { data } = await axios.put(
+          `/api/wishlist/${wishlist.id}`,
+          wishlist
+        );
+        history.goBack();
       }
-      dispatch(_addItem(created));
-      history.goBack();
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
     }
   };
 };
-export const deleteItem = (itemId) => {
+
+export const addWishlist = (wishlist, history) => {
+  console.log(wishlist.userId);
   return async (dispatch) => {
     try {
-      const { data: item } = await axios.delete(`/api/item/${itemId}`);
-      dispatch(_deleteItem(item));
+      const token = window.localStorage.getItem(TOKEN);
+      if (token) {
+        const { data } = await axios.post(
+          `/api/wishlist/${wishlist.userId}`,
+          wishlist
+        );
+        dispatch(_addWishlist(data));
+        history.goBack();
+      }
     } catch (err) {
       console.log(err);
     }
@@ -79,11 +91,10 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case SET_WISHLIST:
       return action.wishlist;
-    case ADD_ITEM:
-      return { ...state, items: [...state, action.item] };
-    case DELETE_ITEM:
-      let items = state.items.filter((item) => item.id !== action.item.id);
-      return { ...state, items: items };
+    case UPDATE_WISHLIST:
+      return action.wishlist;
+    case ADD_WISHLIST:
+      return action.wishlist;
     default:
       return state;
   }

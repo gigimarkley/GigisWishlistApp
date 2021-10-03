@@ -48,3 +48,14 @@ Database Setup
 
 
 Now, you should be deployed!
+
+NOTES FOR MYSELF:
+// import { parser } from "html-metadata-parser";
+ //This is for parsing the url when I get to it
+  // (async () => {
+  //   var result = await parser(
+  //     "https://gorjana.com/products/blake-necklace?nosto=dynamic-frontpage-nosto-1-copy-copy-2"
+  //   );
+  //   console.log(result.og); //this is the url data. it contains the image and other stuff like name and brand and urlc
+  //   //console.log(JSON.stringify(result, null, 3));
+  // })();

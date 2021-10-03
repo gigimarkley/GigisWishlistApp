@@ -11,7 +11,7 @@ class UpdateItem extends React.Component {
       name: "",
       link: "",
       notes: "",
-      quantity: 0,
+      quantity: null,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -69,7 +69,9 @@ class UpdateItem extends React.Component {
           Submit
         </button>
         <button>
-          <Link to="/account">Cancel</Link>
+          <Link to={`/wishlist/${this.props.selectedItem.wishlistId}`}>
+            Cancel
+          </Link>
         </button>
       </form>
     );

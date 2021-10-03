@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { me } from "./store";
+
 import AccountInfo from "./components/AccountInfo";
 import UpdateAccount from "./components/UpdateAccount";
 import { Login, Signup } from "./components/AuthForm";
@@ -11,10 +12,8 @@ import SingleWishlist from "./components/SingleWishlist";
 import SingleItem from "./components/SingleItem";
 import UpdateItem from "./components/UpdateItem";
 import AddItem from "./components/AddItem";
+import AddWishlist from "./components/AddWishlist";
 
-/**
- * COMPONENT
- */
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
@@ -29,11 +28,13 @@ class Routes extends Component {
           <Switch>
             <Route exact path="/home" component={Home} />
             <Route exact path="/wishlist" component={AllWishlists} />
+            <Route exact path="/wishlist/add" component={AddWishlist} />
             <Route
               exact
               path="/wishlist/:wishlistId"
               component={SingleWishlist}
             />
+
             <Route exact path="/item/add" component={AddItem} />
             <Route exact path="/item/:itemId" component={SingleItem} />
             <Route exact path="/item/:itemId/update" component={UpdateItem} />
@@ -54,9 +55,6 @@ class Routes extends Component {
   }
 }
 
-/**
- * CONTAINER
- */
 const mapState = (state) => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.

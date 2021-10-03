@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchUser } from "../store/singleUser";
 import { fetchItem } from "../store/singleItem";
-import { deleteItem } from "../store/singlewishlist";
+import { deleteItem } from "../store/singleItem";
 import { Link } from "react-router-dom";
 
 class SingleItem extends React.Component {
@@ -59,7 +59,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = (dispatch, { history }) => {
   return {
     getAccount: (userId) => {
       dispatch(fetchUser(userId));
@@ -68,7 +68,7 @@ const mapDispatch = (dispatch) => {
       dispatch(fetchItem(itemId));
     },
     deleteItem: (itemId) => {
-      dispatch(deleteItem(itemId));
+      dispatch(deleteItem(itemId, history));
     },
   };
 };

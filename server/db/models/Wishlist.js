@@ -4,7 +4,7 @@ const db = require("../db");
 const Wishlist = db.define("wishlist", {
   public: {
     type: Sequelize.BOOLEAN,
-    defaultValue: false,
+    defaultValue: true,
   },
   name: {
     type: Sequelize.TEXT,

@@ -37,7 +37,6 @@ export const fetchAllWishlists = (userId) => {
 
 //REDUCER
 const initialState = [];
-
 export default function allWishlists(state = initialState, action) {
   switch (action.type) {
     case SET_ALL_WISHLISTS:

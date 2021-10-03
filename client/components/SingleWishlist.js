@@ -30,7 +30,6 @@ class SingleWishlist extends React.Component {
         <Link id="pageLinks" to={`/item/add`}>
           <button>Add Item</button>
         </Link>
-        <button>Edit Wishlist</button>
         <Link id="pageLinks" to={`/wishlist`}>
           <button>Go Back To All Wishlists</button>
         </Link>
@@ -47,7 +46,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = (dispatch, { history }) => {
   return {
     getAccount: (userId) => {
       dispatch(fetchUser(userId));

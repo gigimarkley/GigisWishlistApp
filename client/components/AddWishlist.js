@@ -1,19 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { addItem } from "../store/singleItem";
+import { addWishlist } from "../store/singleWishlist";
 
-class AddItem extends React.Component {
+class AddWishlist extends React.Component {
   constructor(props) {
     super(props);
-    console.log("PROPS", props);
     this.state = {
       name: "",
-      link: "",
-      notes: "",
-      quantity: 1,
-      wishlistId: props.selectedWishlist.id,
-      categoryId: 1,
+      userId: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,38 +17,26 @@ class AddItem extends React.Component {
   handleChange(evt) {
     this.setState({
       [evt.target.name]: evt.target.value,
+      userId: this.props.user.id,
     });
   }
+
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.addItem(this.state);
+
+    this.props.addWishlist(this.state);
   }
 
   render() {
-    const { name, link, notes, quantity } = this.state;
+    const { name } = this.state;
     const { handleSubmit, handleChange } = this;
     return (
       <form onSubmit={handleSubmit}>
-        <h1 id="pageTitles">Add Item Info</h1>
+        <h1 id="pageTitles">Add Wishlist Info</h1>
         <div id="row1">
           <div>
             <label>NAME:</label>
             <input onChange={handleChange} name="name" value={name} />
-          </div>
-
-          <div>
-            <label>LINK:</label>
-            <input onChange={handleChange} name="link" value={link} />
-          </div>
-
-          <div>
-            <label>NOTES:</label>
-            <input onChange={handleChange} name="notes" value={notes} />
-          </div>
-
-          <div>
-            <label>QUANTITY:</label>
-            <input onChange={handleChange} name="quantity" value={quantity} />
           </div>
         </div>
 
@@ -61,7 +44,7 @@ class AddItem extends React.Component {
           Submit
         </button>
 
-        <Link to={`/wishlist/${this.props.selectedWishlist.id}`}>
+        <Link to={"/wishlist"}>
           <button>Cancel</button>
         </Link>
       </form>
@@ -72,16 +55,15 @@ class AddItem extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
-    selectedWishlist: state.selectedWishlist,
   };
 };
 
 const mapDispatch = (dispatch, { history }) => {
   return {
-    addItem: (item) => {
-      dispatch(addItem(item, history));
+    addWishlist: (wishlist) => {
+      dispatch(addWishlist(wishlist, history));
     },
   };
 };
 
-export default connect(mapStateToProps, mapDispatch)(AddItem);
+export default connect(mapStateToProps, mapDispatch)(AddWishlist);
