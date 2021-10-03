@@ -58,8 +58,8 @@ const seed = async () => {
 
     //ITEMS
     await Item.create({
-      name: "thing1",
-      link: "https://gorjana.com/",
+      name: "Blake Necklace",
+      link: "https://gorjana.com/products/blake-necklace?nosto=dynamic-frontpage-nosto-1-copy-copy-2",
       notes: "Some notes here",
       wishlistId: wishlist1.id,
       categoryId: jewelry.id,

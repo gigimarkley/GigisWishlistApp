@@ -6,7 +6,6 @@ import { addItem } from "../store/singleItem";
 class AddItem extends React.Component {
   constructor(props) {
     super(props);
-    console.log("PROPS", props);
     this.state = {
       name: "",
       link: "",

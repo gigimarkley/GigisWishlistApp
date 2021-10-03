@@ -26,10 +26,26 @@ router.put("/:itemId", async (req, res, next) => {
   }
 });
 
+const { parser } = require("html-metadata-parser");
+async function urlParser(url) {
+  var result = await parser(url, { mode: "cors" });
+  return result;
+}
+
 //ADD an item
 // /api/item
 router.post("/", async (req, res, next) => {
   try {
+    //if req.body.imageUrl does not have an imageURL, use parser to grab from url
+    if (!req.body.imageUrl) {
+      const urlData = await urlParser(req.body.link);
+      req.body.imageUrl = urlData.og.image;
+    }
+    //if req.body.name does not have name, use parser to grab from url
+    if (req.body.name === "") {
+      const urlData = await urlParser(req.body.link);
+      req.body.name = urlData.og.title;
+    }
     res.status(201).json(await Item.create(req.body));
   } catch (error) {
     next(error);

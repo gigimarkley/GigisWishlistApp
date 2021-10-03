@@ -20,12 +20,11 @@ class SingleItem extends React.Component {
           <h1 id="pageTitles">{selectedItem.name}</h1>
           <img src={selectedItem.imageUrl}></img>
         </a>
-
         <h3>WISHLIST: {this.props.selectedWishlist.name}</h3>
         <h3>NOTES: {selectedItem.notes}</h3>
         <h3>CURRENT PRICE:</h3>
         <h3>QUANTITY: {selectedItem.quantity}</h3>
-        <h3>STATUS: {selectedItem.status}</h3>
+        {/* <h3>STATUS: {selectedItem.status}</h3> */}
         <h3>ADDED TO LIST ON: {selectedItem.createdAt}</h3>
         <Link id="pageLinks" to={`/item/${selectedItem.id}/update`}>
           <button>Update Item Info</button>
