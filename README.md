@@ -1,8 +1,10 @@
 GIGI'S WISHLIST APP
 
-Eventually will be paired with the chrom extension: https://github.com/gigimarkley/GigisWishlistChromeExtensions 
+Paired with the chrome extension, which is now included on this repo: https://github.com/gigimarkley/GigisWishlistChromeExtensions 
 
 Developer: Gillian "Gigi" Markley | github: https://github.com/gigimarkley | LinkedIn: https://www.linkedin.com/in/gillian-markley/
+
+Design Schema: https://docs.google.com/drawings/d/1nAQqGOKDID545lXzp84hdkKfM_ryOo1hRI2ZlHk71Rk/edit?usp=sharing
 
 To get started:
 * `npm install`
