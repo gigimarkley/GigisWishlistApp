@@ -8,6 +8,12 @@ switchWishlistsSelector.addEventListener("change", async (event) => {
   selectedWishlist = event.target.value;
 });
 
+goToWishlistSiteButton.addEventListener("click", () => {
+  chrome.runtime.sendMessage({
+    message: "open_site",
+  });
+});
+
 addToWishlistButton.addEventListener("click", () => {
   if (selectedWishlist) {
     chrome.windows.getCurrent({ populate: true }, (window) => {
@@ -22,31 +28,8 @@ addToWishlistButton.addEventListener("click", () => {
           tabId: site_to_add[0].id,
         },
       });
-      //       chrome.storage.sync.get("new_url_data", ({ new_url_data }) => {
-      //   const params = {
-      //     wishlistId: "1", //will eventually reference new_url_data.selected_Wishlist
-      //     categoryId: "1",
-      //     name: new_url_data.destination_title,
-      //     link: new_url_data.url,
-      //   };
-
-      //   const response = await fetch("http://localhost:8080/api/item", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify(params),
-      //   });
-      //   const data = await response.json();
-      // });
     });
   } else {
     alert(`Please select a wishlist first!`);
   }
-});
-
-goToWishlistSiteButton.addEventListener("click", () => {
-  chrome.runtime.sendMessage({
-    message: "open_site",
-  });
 });

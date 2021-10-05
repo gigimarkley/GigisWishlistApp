@@ -6,7 +6,7 @@ import { logout } from "../store";
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
     <nav>
-      <img id="wishlistLogo" src="./favicon.ico"></img>
+      <img id="wishlistLogo" src="./wishlist_logo-5.png"></img>
       <div>
         <h1 id="siteName">Gigi's Wishlist</h1>
       </div>
