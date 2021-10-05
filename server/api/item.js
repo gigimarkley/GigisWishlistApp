@@ -42,7 +42,9 @@ router.post("/", async (req, res, next) => {
     //if req.body.imageUrl does not have an imageURL, use parser to grab from url
     if (!req.body.imageUrl) {
       const urlData = await urlParser(req.body.link);
-      req.body.imageUrl = urlData.og.image;
+      if (urlData.og.image) {
+        req.body.imageUrl = urlData.og.image;
+      }
     }
     //if req.body.name does not have name, use parser to grab from url
     if (req.body.name === "") {

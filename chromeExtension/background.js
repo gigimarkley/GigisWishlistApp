@@ -49,7 +49,7 @@ async function addToWishlistFunc() {
   const response = await fetch("http://localhost:8080/api/item", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "text/plain",
     },
     body: JSON.stringify(params),
   });
