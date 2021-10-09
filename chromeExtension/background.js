@@ -41,17 +41,23 @@ async function addToWishlistFunc() {
   params = {
     wishlistId: "1",
     categoryId: "1",
-    name: "FROM EXTENSION!!!",
+    name: "FROM EXTENSION!!! TEST 3",
     link: "https://gorjana.com/collections/best-sellers/products/venice-mini-bracelet?nosto_source=cmp&nosto=615a6b0b76b6710da017415b",
   };
 
   //SEND A POST REQ TO APP TO ADD THE PARAMS ITEM TO THE DB
-  const response = await fetch("http://localhost:8080/api/item", {
+  fetch("http://localhost:8080/api/item", {
     method: "POST",
     headers: {
-      "Content-Type": "text/plain",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(params),
-  });
-  const data = await response.json();
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 }
