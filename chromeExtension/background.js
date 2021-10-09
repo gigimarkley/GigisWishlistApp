@@ -29,21 +29,14 @@ async function addToWishlistFunc() {
     document.body.style.backgroundColor = color;
   });
 
-  // chrome.storage.sync.get("new_url_data", ({ new_url_data }) => {
-  //   params = {
-  //     wishlistId: "1", //will eventually reference new_url_data.selected_Wishlist
-  //     categoryId: "1",
-  //     name: new_url_data.destination_title,
-  //     link: new_url_data.url,
-  //   };
-  // });
-
-  params = {
-    wishlistId: "1",
-    categoryId: "1",
-    name: "FROM EXTENSION!!! TEST 3",
-    link: "https://gorjana.com/collections/best-sellers/products/venice-mini-bracelet?nosto_source=cmp&nosto=615a6b0b76b6710da017415b",
-  };
+  chrome.storage.sync.get("new_url_data", ({ new_url_data }) => {
+    params = {
+      wishlistId: "1", //will eventually reference new_url_data.selected_Wishlist
+      categoryId: "1",
+      name: new_url_data.destination_title,
+      link: new_url_data.url,
+    };
+  });
 
   //SEND A POST REQ TO APP TO ADD THE PARAMS ITEM TO THE DB
   fetch("http://localhost:8080/api/item", {
