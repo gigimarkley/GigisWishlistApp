@@ -2,6 +2,14 @@ let addToWishlistButton = document.querySelector("#addToWishlist");
 let goToWishlistSiteButton = document.querySelector("#goToWishlistSite");
 let switchWishlistsSelector = document.querySelector(".switchWishlists");
 
+chrome.storage.sync.get(["wishlists"], function ({ wishlists }) {
+  wishlists.forEach((element) => {
+    let option = document.createElement("option");
+    option.text = element.name;
+    document.querySelector(".switchWishlists").add(option, null);
+  });
+});
+
 let selectedWishlist;
 switchWishlistsSelector.addEventListener("change", async (event) => {
   const result = document.querySelector(".result");

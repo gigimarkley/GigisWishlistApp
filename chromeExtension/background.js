@@ -29,29 +29,58 @@ async function addToWishlistFunc() {
     document.body.style.backgroundColor = color;
   });
 
-  // chrome.storage.sync.get("new_url_data", ({ new_url_data }) => {
-  //   params = {
-  //     wishlistId: "1", //will eventually reference new_url_data.selected_Wishlist
-  //     categoryId: "1",
-  //     name: new_url_data.destination_title,
-  //     link: new_url_data.url,
-  //   };
-  // });
-
-  params = {
-    wishlistId: "1",
-    categoryId: "1",
-    name: "FROM EXTENSION!!!",
-    link: "https://gorjana.com/collections/best-sellers/products/venice-mini-bracelet?nosto_source=cmp&nosto=615a6b0b76b6710da017415b",
-  };
+  chrome.storage.sync.get("new_url_data", ({ new_url_data }) => {
+    params = {
+      wishlistId: "1", //will eventually reference new_url_data.selected_Wishlist
+      categoryId: "1",
+      name: new_url_data.destination_title,
+      link: new_url_data.url,
+    };
+  });
 
   //SEND A POST REQ TO APP TO ADD THE PARAMS ITEM TO THE DB
-  const response = await fetch("http://localhost:8080/api/item", {
+  fetch("http://localhost:8080/api/item", {
     method: "POST",
     headers: {
-      "Content-Type": "text/plain",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(params),
-  });
-  const data = await response.json();
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 }
+
+//GET REQ TO APP TO GET THE LIST OF WISHLISTS
+chrome.runtime.onInstalled.addListener(() => {
+  fetch("http://localhost:8080/api/wishlist/allWishlists/1", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+      //SETS WISHLISTS IN CHROME STORAGE
+      let wishlists = data;
+      chrome.storage.sync.set({ wishlists }, function () {
+        console.log("Value is set to " + wishlists);
+      });
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+});
+
+// //SETS WISHLISTS IN CHROME STORAGE
+// let wishlists = ["list1", "list2"];
+// chrome.runtime.onInstalled.addListener(() => {
+//   chrome.storage.sync.set({ wishlists }, function () {
+//     console.log("Value is set to " + wishlists);
+//   });
+// });
