@@ -31,7 +31,8 @@ async function addToWishlistFunc() {
 
   chrome.storage.sync.get("new_url_data", ({ new_url_data }) => {
     params = {
-      wishlistId: "1", //will eventually reference new_url_data.selected_Wishlist
+      wishlistId: new_url_data.selected_Wishlist.toString(),
+      // wishlistId: "1", //will eventually reference new_url_data.selected_Wishlist
       categoryId: "1",
       name: new_url_data.destination_title,
       link: new_url_data.url,
@@ -76,11 +77,3 @@ chrome.runtime.onInstalled.addListener(() => {
       console.error("Error:", error);
     });
 });
-
-// //SETS WISHLISTS IN CHROME STORAGE
-// let wishlists = ["list1", "list2"];
-// chrome.runtime.onInstalled.addListener(() => {
-//   chrome.storage.sync.set({ wishlists }, function () {
-//     console.log("Value is set to " + wishlists);
-//   });
-// });

@@ -6,6 +6,7 @@ chrome.storage.sync.get(["wishlists"], function ({ wishlists }) {
   wishlists.forEach((element) => {
     let option = document.createElement("option");
     option.text = element.name;
+    option.value = element.id;
     document.querySelector(".switchWishlists").add(option, null);
   });
 });
@@ -14,6 +15,7 @@ let selectedWishlist;
 switchWishlistsSelector.addEventListener("change", async (event) => {
   const result = document.querySelector(".result");
   selectedWishlist = event.target.value;
+  selectedWishlistName = event.target.text;
 });
 
 goToWishlistSiteButton.addEventListener("click", () => {
@@ -26,7 +28,7 @@ addToWishlistButton.addEventListener("click", () => {
   if (selectedWishlist) {
     chrome.windows.getCurrent({ populate: true }, (window) => {
       const site_to_add = window.tabs.filter((tab) => tab.active);
-      alert(`Adding ${site_to_add[0].title} to your ${selectedWishlist}!`);
+      alert(`Adding ${site_to_add[0].title} to your wishlist!`);
       chrome.runtime.sendMessage({
         message: "add_url",
         payload: {
