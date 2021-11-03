@@ -54,3 +54,33 @@ async function addToWishlistFunc() {
       console.error("Error:", error);
     });
 }
+
+//GET REQ TO APP TO GET THE LIST OF WISHLISTS
+chrome.runtime.onInstalled.addListener(() => {
+  fetch("http://localhost:8080/api/wishlist/allWishlists/1", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+      //SETS WISHLISTS IN CHROME STORAGE
+      let wishlists = data;
+      chrome.storage.sync.set({ wishlists }, function () {
+        console.log("Value is set to " + wishlists);
+      });
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+});
+
+// //SETS WISHLISTS IN CHROME STORAGE
+// let wishlists = ["list1", "list2"];
+// chrome.runtime.onInstalled.addListener(() => {
+//   chrome.storage.sync.set({ wishlists }, function () {
+//     console.log("Value is set to " + wishlists);
+//   });
+// });
